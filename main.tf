@@ -1,6 +1,6 @@
 resource "aws_sqs_queue" "queue" {
   name   = var.name
-  policy = jsonencode(var.policy)
+  policy = jsonencode(file(var.policy))
 
   tags = {
     "Name"         = var.tag_name
@@ -8,7 +8,7 @@ resource "aws_sqs_queue" "queue" {
   }
 }
 
-resource "aws_s3_bucket notification" "bucket_notification" {
+resource "aws_s3_bucket_notification" "bucket_notification" {
   count = var.dependency ? 1 : 0
 
   bucket = var.bucket_id
