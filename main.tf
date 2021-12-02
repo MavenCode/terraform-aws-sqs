@@ -1,6 +1,6 @@
 resource "aws_sqs_queue" "queue" {
   name   = var.name
-  policy = jsonencode(file(var.policy))
+  policy = var.policy
 
   tags = {
     "Name"         = var.tag_name

@@ -7,7 +7,7 @@ variable "name" {
 variable "policy" {
   description = "sqs policy"
   type        = string
-  default     = "default-policy.json"
+  default     = "{}"
 }
 
 variable "bucket_arn" {
