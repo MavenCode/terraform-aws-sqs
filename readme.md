@@ -1,10 +1,12 @@
 # AWS SQS deployment with Terraform
 
+######
+
 This is a template repository that can be re-used when provisioning amazon simple queue service infrastructure using terraform. Included is an example-module implementation with necessary argument provision documentation for flexibility, and default arguments provided for handling exceptions for a robust module build.
 
 On flexible build, a default default-policy.json file is provided with module that allows complete sqs action configured on module deployment using this policy definition. Custom policy can be imported as a .json file passed to the policy input argument.
 
-This sqs infrastructure is built to serve s3 bucket notifications if a bucket id and dependecy variables are provided by user.
+**_This sqs infrastructure is built to serve s3 bucket notifications if a bucket id and dependecy variables are provided by user._**
 
 See below for user provided variables to customize sqs deployment. Also available in the variables.tf file with the variable type expected.
 | Input variables | Description |
