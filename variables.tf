@@ -22,11 +22,6 @@ variable "bucket_id" {
   default     = "null"
 }
 
-variable "dependency" {
-  description = "sqs depencies, bucket, notification ect.| module.aws_s3_bucket.bucket"
-  type        = list(string)
-  default     = []
-}
 # tags value for IaC and env: dev, prod or test
 variable "tag_name" {
   default = "terraform-IaC"
