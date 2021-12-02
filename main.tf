@@ -17,9 +17,10 @@ resource "aws_s3_bucket notification" "bucket_notification" {
   ]
 
   queue {
-    id        = aws_sqs_queue.queue.id
-    queue_arn = aws_sqs_queue.queue.arn
-    events    = ["s3:ObjectCreated"]
+    id            = aws_sqs_queue.queue.id
+    queue_arn     = aws_sqs_queue.queue.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_suffix = ".log"
 
   }
 }
