@@ -4,10 +4,10 @@ variable "name" {
   default     = "s3-event-queue"
 }
 
-variable "policy" {
-  description = "sqs policy"
-  default     = default-policy.json
-}
+# variable "policy" {
+#   description = "sqs policy"
+#   default     = default-policy.json
+# }
 
 variable "bucket_arn" {
   description = "bucket.arn value | module.aws_s3_bucket.bucket_arn"
@@ -33,5 +33,3 @@ variable "tag_name" {
 variable "env_name" {
   default = "dev"
 }
-
-

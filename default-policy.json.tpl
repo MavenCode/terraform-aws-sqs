@@ -8,7 +8,7 @@
         "Action": "sqs:*",
         "Resource": "arn:aws:sqs:*:*:s3-event-queue",
         "Condition": {
-            "ArnEquals": { "aws:SourceArn": "${var.bucket_arn}" }
+            "ArnEquals": { "aws:SourceArn": "${bucket_arn}" }
         }
       }
     ]
