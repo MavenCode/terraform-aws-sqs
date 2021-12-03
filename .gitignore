@@ -26,9 +26,6 @@ override.tf.json
 # !example_override.tf
 
 # Include tfplan files 
+.terraform.lock.hcl
 
 .DS_Store
-
-.gitignore
-
-.terraform.lock.hcl
