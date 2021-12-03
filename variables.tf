@@ -7,6 +7,7 @@ variable "sqs_name" {
 variable "policy" {
   description = "sqs policy"
   default     = "default-policy.json"
+
 }
 
 variable "bucket_arn" {
