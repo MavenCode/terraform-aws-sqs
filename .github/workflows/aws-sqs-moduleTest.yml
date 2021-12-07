@@ -50,9 +50,11 @@ on:
       - main
     paths-ignore:
       -'docs/**'
+      -'Docs/**'
   pull_request:
     paths-ignore:
       -'docs/**'
+      -'Docs/**'
 
 jobs:
   terraform:
@@ -73,13 +75,22 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
-    
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      
+    # Export aws secret and access key as vars
+    - name: Export secre_key, access_key and region
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-1
+        export TF_VAR_region: ${{ secrets.MAVEN_AWS_REGION }}
+        export TF_VAR_access_key: ${{ secrets.MAVEN_AWS_ACCESS_KEY }}
+        export TF_VAR_secret_key: ${{ secrets.MAVEN_AWS_SECRET_KEY }}
+    
+    ## Using terraform implementation in workflow above. Can be changed to AWS configuration below.
+    
+#     - name: Configure AWS Credentials
+#       uses: aws-actions/configure-aws-credentials@v1
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         aws-region: us-west-1
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
