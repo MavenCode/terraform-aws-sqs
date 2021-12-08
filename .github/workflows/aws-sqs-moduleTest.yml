@@ -42,21 +42,25 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+
 name: "AWS-sqs-module-Test"
 
 on:
   push:
     branches:
       - main
-    paths-ignore: -'docs/**'
+    paths-ignore:
+      -'docs/**'
       -'Docs/**'
   pull_request:
-    paths-ignore: -'docs/**'
+    paths-ignore:
+      -'docs/**'
+
       -'Docs/**'
 
 jobs:
   terraform:
-    name: "AWS-sqs-Terraform"
+    name: 'AWS-sqs-Terraform'
     runs-on: ubuntu-latest
     environment: development
 
