@@ -13,6 +13,7 @@ on:
   pull_request:
     branch:
       - main
+      - master
     paths-ignore:
       - "docs/**"
       - "Docs/**"
@@ -37,3 +38,10 @@ jobs:
           RELEASE_BRANCHES: master, main
           DEFAULT_BUMP: patch
           VERBOSE: false
+
+      - name: Git release versioning
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.current_tag.outputs.new_tag }}
+          name: Release ${{ steps.current_tag.outputs.new_tag }}
+          body: ${{ steps.current_tag.outputs.changelog }}
