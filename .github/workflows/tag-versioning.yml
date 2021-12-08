@@ -1,0 +1,48 @@
+# Tag and versioning of commits on push and pull-request to main.
+
+name: "tags & versions"
+
+on:
+  push:
+    branch:
+      - main
+      - master
+    paths-ignore:
+      - "docs/**"
+      - "Docs/**"
+  pull_request:
+    branch:
+      - main
+      - master
+    paths-ignore:
+      - "docs/**"
+      - "Docs/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+      - name: Bump version and push tag
+        id: current_tag
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          RELEASE_BRANCHES: master, main
+          DEFAULT_BUMP: patch
+          VERBOSE: false
+
+      - name: Git release versioning
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.current_tag.outputs.new_tag }}
+          name: Release ${{ steps.current_tag.outputs.new_tag }}
+          body: ${{ steps.current_tag.outputs.changelog }}
