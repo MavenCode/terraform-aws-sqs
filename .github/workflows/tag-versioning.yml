@@ -6,14 +6,12 @@ on:
   push:
     branch:
       - main
-      - master
     paths-ignore:
       - "docs/**"
       - "Docs/**"
   pull_request:
     branch:
       - main
-      - master
     paths-ignore:
       - "docs/**"
       - "Docs/**"
