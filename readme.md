@@ -17,7 +17,7 @@ See below for user provided variables to customize sqs deployment. Also availabl
 | policy | .json file with custom sqs policy, resources, actions, etc defined |
 | bucket_arn | if sqs is connected to bucket, bucket.arn value |
 | bucket_id | if sqs is connected to bucket, bucket.id value |
-| dependency | if sqs is connected to s3 buckeu supply the bucket id as a list of strings of the bucket ids |
+| dependency | if sqs is connected to s3 bucket, supply the bucket id(s) as a list of strings otherwise if only sqs, leave as default or supply [] |
 | tag_name | infrastructure deployment framework -"Terraform" |
 | env_name | infrastructure environment; "dev", "test", "prod", "QA" and so on |
 
