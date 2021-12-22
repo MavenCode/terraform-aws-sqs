@@ -1,15 +1,15 @@
 module "aws_sqs_queue" {
-  source     = "https://github.com/MavenCode/terraform-aws-sqs/"
-  name       = var.name
-  policy     = var.policy
-  bucket_arn = var.bucket_arn
-  bucket_id  = var.bucket_id
-  dependency = var.dependency
+  source     = "git@github.com:MavenCode/terraform-aws-sqs"
+  sqs_name   = var.name
+  bucket_arn = data.aws_s3_bucket.bucket_vars.arn
+  bucket_id  = data.aws_s3_bucket.bucket_vars.id
+  dependency = [aws_s3_bucket.storage.id] # = [] for no implenmentation
 
   # tags value for IaC and env: dev, prod or test
-  tag_name = var.tag
-  env_name = var.env
+  tag_name = var.tag_name
+  env_name = var.env_name
 }
+
 data "aws_s3_bucket" "bucket_vars" {
   bucket = aws_s3_bucket.storage.id
 }
@@ -33,16 +33,3 @@ resource "random_string" "random" {
   special = false
   upper   = false
 }
-
-variable "bucket_name" {}
-variable "acl" {}
-variable "tag_name" {}
-variable "env_name" {}
-
-variable "name" {}
-variable "policy" {}
-variable "bucket_arn" {}
-variable "bucket_id" {}
-variable "dependency" {}
-variable "tag" {}
-variable "env" {}

@@ -8,6 +8,8 @@ On flexible build, a default default-policy.json file is provided with module th
 
 **_This sqs infrastructure is built to serve s3 bucket notifications if a bucket id and dependecy variables are provided by user._**
 
+**_update: module variables must be passed at module decalration. Using CLI time var argument using \*.tfvars file is impossible with non-string variables, bucket_arn, bucket_id, dependecy. If dependency is declared = '[""]' bucket attributes id and arn are not needed in module call_**
+
 See below for user provided variables to customize sqs deployment. Also available in the variables.tf file with the variable type expected.
 | Input variables | Description |
 | ----------------- | -------------------------------------------------------------------- |

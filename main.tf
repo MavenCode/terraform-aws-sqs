@@ -34,7 +34,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
 
 # policy separation and template implementation.
 data "template_file" "sqs_policy_vars" {
-  template = file("./${var.policy}")
+  template = file("${path.module}/${var.policy}")
 
   vars = {
     resource_arn = aws_sqs_queue.queue.arn
