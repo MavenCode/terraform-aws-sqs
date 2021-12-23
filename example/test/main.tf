@@ -1,5 +1,5 @@
 module "aws_sqs_queue" {
-  source     = "git@github.com:MavenCode/terraform-aws-sqs"
+  source     = "git::https://MavenCode/terraform-aws-sqs.git"
   sqs_name   = var.name
   bucket_arn = data.aws_s3_bucket.bucket_vars.arn
   bucket_id  = data.aws_s3_bucket.bucket_vars.id
